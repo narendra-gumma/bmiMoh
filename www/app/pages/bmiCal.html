@@ -1,0 +1,44 @@
+<ion-view title="BMI Calculator">
+        <ion-nav-buttons side="left">
+          <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        </ion-nav-buttons>
+        <ion-content class="has-header" has-tabs="true" ng-controller='homeCtrl'>
+         
+                    <div class="radioDiv">
+                            <div id="right_part"><span> Metric  </span> <input type="radio"  value="" ng-click="ShowMetric()" name="a"> </div>
+                            <div id ="left_part"><span> standerd </span><input type="radio" value=""  ng-click="ShowStanderd()" name="a"></div>
+                    </div>
+                    <div  ng-show="showMetric">
+                        <div >
+                        <span> WEIGHT</span>
+                        <input placeholder="Enter your Weight" type="number" min="0" ng-model="weight" name="weightvalue" id="weightvalue">
+                    </div>
+            
+                    <div>
+                        <p>height</p>
+                        <input placeholder="Enter your height" type="number" min="0" ng-model="height" name="heightvalue" id="heightvalue">
+                    </div>
+            
+                    <button  ng-click="getBmiValue()">GET BMI VALUE</button>
+                    
+                    <div ng-bind-html="resText"></div>
+                    <div ng-bind-html="resText1"></div>
+                    </div>
+                    <div  ng-show="showStanderd">
+                        <div >
+                            <span> WEIGHT in kgs</span>
+                            <input placeholder="Enter your Weight" type="number" min="0" ng-model="weight" name="weightvalue" id="weightvalue">
+                        </div>
+                    
+                        <div>
+                            <p>height</p>
+                            <input placeholder="Enter your height" type="number" min="0" ng-model="height" name="heightvalue" id="heightvalue">
+                        </div>
+                    
+                        <button  ng-click="getBmiValue()">GET BMI VALUE</button>
+                        
+                        <div ng-bind-html="resText"></div>
+                        <div ng-bind-html="resText1"></div>
+                    </div>           
+        </ion-content>
+      </ion-view>

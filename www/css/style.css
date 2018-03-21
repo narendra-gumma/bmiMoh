@@ -1,1 +1,16 @@
-/* Empty. Add your own CSS if you like */
+#right_part {
+    width:49%;
+    float:left;
+  
+   
+}
+#left_part {
+   
+    float:right;
+    width:49%;
+    
+}
+.radioDiv{
+    margin-top: 10px;
+    margin-left: 10px;
+}
