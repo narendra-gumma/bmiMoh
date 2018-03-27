@@ -1,23 +1,41 @@
-app_controllers.controller('stepsAndCaloriesCtrl', 'stepcounter', function ($scope){
+app_controllers.controller('stepsAndCaloriesCtrl', function ($scope){
 
-    var success = function(message) {
-        alert(message);
-        console.log("log 1");
-    };
+  var stepsCount = {};
+  $scope.resText = "Steps Count :" +"<h1>"+ stepsCount + "</h1>";
+  var successCallback = function (pedometerData) {
+    console.log(pedometerData);
+    stepsCount  = pedometerData.numberOfSteps;
+    $scope.resText = "Steps Count :" +"<h1>"+ stepsCount + "</h1>";
+    // pedometerData.startDate; -> ms since 1970
+    // pedometerData.endDate; -> ms since 1970
+    // pedometerData.distance;
+    // pedometerData.floorsAscended;
+    // pedometerData.floorsDescended;
+};
+var failureCallback =function(error){
+
+};
+var successHandler = function (pedometerData) {
+   console.log(pedometerData);
+   stepsCount  = pedometerData.numberOfSteps;
+   console.log(pedometerData.numberOfSteps);
+   console.log(stepsCount);
+   $scope.resText = "Steps Count :" +"<h1>"+ stepsCount + "</h1>";
+  // pedometerData.startDate; -> ms since 1970
+  // pedometerData.endDate; -> ms since 1970
+  // pedometerData.numberOfSteps;
+   
+  // pedometerData.distance;
+  // pedometerData.floorsAscended;
+  // pedometerData.floorsDescended;
+  
+};
+var onError =function(errordata){
+  console.log(errordata);
+};
+
+pedometer.startPedometerUpdates(successHandler, onError);
+
+pedometer.stopPedometerUpdates(successCallback, failureCallback);
  
-    var failure = function() {
-        alert("Error calling CordovaStepCounter Plugin");
-    };
-    var startingOffset = 0;
-    stepcounter.start(startingOffset, success, failure);
-    stepcounter.stop(success, failure);
-    stepcounter.getTodayStepCount(success, failure);
-    stepcounter.getStepCount(success, failure);
-    stepcounter.deviceCanCountSteps(success, failure);
-    stepcounter.getHistory(
-        function(historyData){
-            success(historyData);
-        },
-        failure
-    );
 });

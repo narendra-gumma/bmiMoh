@@ -2,40 +2,45 @@
         <ion-nav-buttons side="left">
           <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
         </ion-nav-buttons>
-        <ion-content class="has-header" has-tabs="true" ng-controller='homeCtrl'>
+        <ion-content class="has-header" has-tabs="true" ng-controller='bmiCalCtrl'>
          
                     <div class="radioDiv">
                             <div id="right_part"><span> Metric  </span> <input type="radio"  value="" ng-click="ShowMetric()" name="a"> </div>
                             <div id ="left_part"><span> standerd </span><input type="radio" value=""  ng-click="ShowStanderd()" name="a"></div>
                     </div>
+
+
                     <div  ng-show="showMetric">
                         <div >
-                        <span> WEIGHT</span>
-                        <input placeholder="Enter your Weight" type="number" min="0" ng-model="weight" name="weightvalue" id="weightvalue">
-                    </div>
-            
+                            <span> WEIGHT (in Pounds)</span>
+                            <input placeholder="Enter your Weight" type="number" min="0" ng-model="weightPounds" name="weightvalue" id="weightvalue">
+                        </div>
                     <div>
-                        <p>height</p>
-                        <input placeholder="Enter your height" type="number" min="0" ng-model="height" name="heightvalue" id="heightvalue">
+
+                        <p>height (in feet and inches )</p>
+                        <input style ="float:left;" placeholder="feets" type="number" min="0" ng-model="feetheight" name="heightvalue" id="heightvalue">
+                        <input style ="float:right;" placeholder="inches" type="number" min="0" ng-model="inchheight" name="heightvalue" id="heightvalue">
+
                     </div>
-            
-                    <button  ng-click="getBmiValue()">GET BMI VALUE</button>
-                    
+
+                    <button  ng-click="getMetricBmiValue()">GET BMI VALUE</button>
                     <div ng-bind-html="resText"></div>
                     <div ng-bind-html="resText1"></div>
+
                     </div>
+
                     <div  ng-show="showStanderd">
                         <div >
                             <span> WEIGHT in kgs</span>
-                            <input placeholder="Enter your Weight" type="number" min="0" ng-model="weight" name="weightvalue" id="weightvalue">
+                            <input placeholder="Enter your Weight" type="number" min="0" ng-model="weightKgs" name="weightvalue" id="weightvalue">
                         </div>
                     
                         <div>
-                            <p>height</p>
-                            <input placeholder="Enter your height" type="number" min="0" ng-model="height" name="heightvalue" id="heightvalue">
+                            <p>height (In Centimeters)</p>
+                            <input placeholder="Enter your height" type="number" min="0" ng-model="heightCm" name="heightvalue" id="heightvalue">
                         </div>
                     
-                        <button  ng-click="getBmiValue()">GET BMI VALUE</button>
+                        <button  ng-click="getStanderdBmiValue()">GET BMI VALUE</button>
                         
                         <div ng-bind-html="resText"></div>
                         <div ng-bind-html="resText1"></div>
